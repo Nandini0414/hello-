@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        
+        #image{
+            width: 250px;
+        }
+        .container{
+            border: 2px solid black;
+            max-width: 400px;
+            text-align: center;
+            border-radius: 30px;
+            padding: 10px;
+            margin-left: 450px;
+            background-color:plum;
+        }
+        #image--cart{
+            width: 100px;
+              }
+        #display{
+            display: flex;
+            flex-wrap: wrap;
+         }
+    </style>
+</head>
+<body>
+    <div id="container" class="container">
+        <div class="imageHolder">
+        <img src="https://m.media-amazon.com/images/I/616suF7t8aL._AC_UF1000,1000_QL80_.jpg" alt="" id="image"></div>
+        <p><spam id="title"> Noise </spam >  <spam id="Price"> ₹3000</spam></p> 
+        <div class="buttonHolder">
+            <button onclick="add();">Add to cart</button>    
+    </div>
+    </div>
+    <div id="display"></div>
+</body>
+<script>
+    const container = document.getElementById('container');
+    const display = document.getElementById('display');
+   
+function add(){
+    const image = document.getElementById('image');
+    console.log("adding");
+    const div = document.createElement('div');
+    console.log(div);
+    console.log(image.src);
+    let img = getImage(image.src);
+    let title = getTitle();
+    let cart = getDiv(img, title);
+    display.append(cart);
+}
+
+function getTitle(){
+    const title = document.getElementById('title');
+    console.log(title.innerText);
+    return title.innerText;
+    title.style.fontSize="10px";
+    
+}
+
+function getImage(url){
+    const img = document.createElement('img');
+    console.log(url);
+    img.src = url;
+    img.alt = "image";
+    img.id = "image--cart";
+    return img;
+}
+
+function getDiv( img, title ){
+    const div = document.createElement('div');
+    div.append(img);
+    div.append(title);
+    const button = document.createElement('button');
+    button.innerText = "Remove";
+    button.style.color="white";
+    button.style.backgroundColor="black";
+    button.style.borderRadius="7px";
+    button.style.padding="5px";
+    div.append(button);
+    button.addEventListener('click', ()=>{
+        div.remove()
+    });
+
+    return div;
+   
+}
+
+</script>
+</html>

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random password</title>
+    <style>
+        .container{
+            border: 2px solid black;
+            background-image: url('https://tse1.mm.bing.net/th?id=OIP.NP60T9FFmYWnaq35LvzGYwHaEK&pid=Api&P=0&h=180');
+            background-size: cover;
+            min-width: 300px;
+            min-height: 400px;
+            width: 60%;
+            border-radius: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            margin-left: 300px;
+        }
+        .sub-container{
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            align-items: center;
+            border: 1px solid white;
+            padding: 40px;
+            width: 50%;
+        }
+        input{
+            padding: 6px ;
+            font-size: 15px;
+            border: none;
+            border-bottom: 5px solid white;
+            
+
+        }
+        button{
+            padding: 5px 10px;
+            font-size: 15px;
+            background-color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+         
+        
+    </style>
+</head>
+<body>
+   <div class="container">
+    <div class="sub-container">
+        <div>
+    <input type="number" name="" id="input"   placeholder="Enter the password size">
+  
+    <button onclick="generate();">generate</button>
+    </div>
+    <p id="para">your password will be displayed here</p>
+   </div>
+   </div>
+    
+</body>
+<script>
+    const para=document.getElementById('para');
+    function generate(){
+        let password="";
+    const input =document.getElementById('input');
+    let range=input.value;
+
+
+    console.log(input.value);
+    let uppercase="AGFSSEYBBVJKLKUIFSCKOIYYERRV";
+    let lowercase="afguyydesfbnbjkjkswcbjhugtrs";
+    let specialcharacters="%#@&**!$";
+    let numbers="0123456789";
+
+    maincharacters=uppercase +lowercase +specialcharacters +numbers;
+    console.log(maincharacters);
+
+
+    let array=maincharacters.split("");
+    console.log(array);
+    
+
+    for(
+        let i=0; i<=range; i++){
+            let index=Math.floor(Math.random()*array.length);
+            password +=array[index];
+        }
+        console.log(maincharacters.charAt(4));
+        console.log("password must contain atleast 8 Characters");
+        para.innerHTML=`<p>password:${password}</p>`
+        if(password.length>=8 && password.length<=16){
+            console.log(password);
+            para.innerHTML=`<p>password:${password}</p>`;
+        }
+       else if(password.length<8 && password.length!=""){
+            para.innerHTML="password must contain atleast 8 Characters";
+        }
+        else if(password.length>16){
+            para.innerHTML="password should not be exceed more than 16 characters";
+        }
+        else{
+            para.innerHTML="enter the password";
+        }
+       input.value="";
+
+        }
+</script>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container{
+            border: 1px solid black;
+            width: 400px;
+            height: 300px;
+            margin: 3px auto;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            align-items: center;
+            border-radius: 20px;
+            background-color: rgb(233, 212, 91);
+            color: white;
+
+        }
+        .buttons{
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            flex-direction: row;
+            width: 100%;
+
+
+        }
+        #display{
+            font-size: 60px;
+            color:black;
+        }
+        button{
+            width: 150px;
+            padding: 10px;
+            border: none;
+            border-radius: 100px;
+            cursor: pointer;
+        }
+    
+        
+    </style>
+</head>
+<body>
+    <div class="container">
+    <div id="display">0</div>
+    <div class="buttons">
+        <button onclick="increase();">inc</button>
+        <button onclick="decrease();">dec</button>
+        <button onclick="reset();">reset</button>
+    </div>
+</div>
+</body>
+<script >
+    let count = 0;
+
+const display=document.getElementById('display');
+
+    function increase(){
+    count ++;
+    console.log(count);
+    display.innerText =count;
+
+}
+function decrease(){
+    count --;
+    console.log(count);
+    display.innerText =count;
+    
+}
+ function reset(){
+    count=0;
+    console.log(count);
+    display.innerText=count;
+ }
+</script>
+</html>

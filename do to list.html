@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> to Do list</title>
+</head>
+<body>
+    <div class="container">
+        <input type="text" name="" id="task">
+        
+    </div>
+    <div>
+        <button id="add">Add</button>
+        <input  type="date" name="" id="date">
+    </div>
+    <div id="tasklist">
+
+    </div>
+</body>
+<script>
+        const task=document.getElementById('task');
+        const button=document.getElementById('add');
+        const date1 =document.getElementById('date');
+        const tasklist =document.getElementById('tasklist');
+        button.addEventListener("click",addtask);
+
+        function addtask(){
+            console.log(task.value);
+           console.log(date1);
+
+            const div = getdiv();
+            div.innerText=task.value;
+            console.log(div);
+            const btn = document.createElement("button");
+            btn.innerText='remove';
+            date1.id="date";
+            btn.addEventListener('click',()=>{
+                div.remove();
+            });
+            date1.value='';
+            div.append(btn);
+            tasklist.append(div);
+            task.value='';
+            
+
+        }
+        function getdiv(){
+                return document.createElement('div');
+
+        }
+</script>
+</html>

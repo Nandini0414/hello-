@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background-color:bisque;
+            background-image: url("https://img.freepik.com/free-photo/gray-scale-shot-black-watch_181624-422.jpg?size=626&ext=jpg&ga=GA1.1.44546679.1715731200&semt=ais_user");
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        .container1{
+            background-color:rgb(230, 190, 140);
+            height: 400px;
+            width: 400px;
+            margin-left: 500px;
+            margin-top: 170px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 350px;
+            flex-direction: column;
+            
+        }
+        #display{
+            height: 50px;
+            width: 300px;
+            
+            border-radius: 20px;
+            margin-bottom: 20px;
+            padding-left: 30px;
+            padding-top: 15px;
+            font-size: 30px;
+            background-color: rgb(234, 137, 68);
+            color:black;
+        }
+        .buttons{
+            padding-left: 10px;
+            padding-bottom: 20px;
+            padding-right: 30px;
+            border-radius: 20px;
+            margin-bottom: 20px;
+            padding-left: 33px;
+            padding-top: 15px;
+            font-size: 30px;
+            background-color:rgb(55, 212, 107);
+            color: white;
+        }
+        button{
+            height: 30px;
+            width: 60px;
+            background-color:rgb(216, 171, 57);
+            color:black;
+            border-radius: 10px;
+            border: none;
+        }
+        .animations{
+            animation: count 1s infinite ;
+            border:4px solid rgb(43, 201, 229);
+          
+        }
+       
+    </style>
+</head>
+<body>
+    <div class="container1 animations">
+        <div id="display">00 : 00 : 00 : 00 : 000</div>
+        <div class="buttons">
+            <button onclick="run()">Start</button>
+            <button onclick="stop()">Stop</button>
+            <button onclick="reset()">Reset</button>
+        </div>
+    </div>
+</body>
+
+<script>
+    const display = document.getElementById("display");
+const container1 = document.getElementsByClassName("container1");
+let milliSec = 0;
+let Sec = 0;
+let Min = 0;
+let Hours = 0;
+let Days = 0;
+
+function start(){
+    milliSec += 10;
+    if(milliSec==1000){
+        Sec++;
+        milliSec = 0;
+    }
+    if(Sec==60){
+        Min++;
+        Sec = 0;
+    }
+    if(Min==60){
+        Hours++;
+        Min = 0;
+    }
+    if(Hours==24){
+        Hours = 0;
+        Days++;
+    }
+    console.log(`${Days} : ${Hours} : ${Min} : ${Sec} : ${milliSec}`);
+    display.innerText = `${Days.toString().padStart(2,0)} : ${Hours.toString().padStart(2,0)} : ${Min.toString().padStart(2,0)} : ${Sec.toString().padStart(2,0)} : ${milliSec.toString().padStart(3,0)}`;
+}
+let id;
+function run(){
+    id = setInterval(start, 10);
+}
+
+function stop(){
+    clearInterval(id);
+}
+
+function reset(){
+    Days = 0;
+    Hours = 0;
+    Min = 0;
+    Sec = 0;
+    milliSec = 0;
+    console.log("${Days} : ${Hours} : ${Min} : ${Sec} : ${milliSec}");
+    display.innerText =`${Days.toString().padStart(2,0)} : ${Hours.toString().padStart(2,0)} : ${Min.toString().padStart(2,0)} : ${Sec.toString().padStart(2,0)} : ${milliSec.toString().padStart(3,0)}`;
+}
+</script>
+</html>

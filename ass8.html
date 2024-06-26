@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .style{
+            width: 300px;
+            border-radius: 500px;
+            animation: slide-in 1s linear;
+            padding: 20px;
+            
+
+        }
+        @keyframes slide-in{
+        0%{
+                transform: translateY(100px) rotate(180deg);
+            }
+        }
+        #display{
+            text-align: center;
+            font-size: 40px;
+            
+            margin: 40px;
+            padding: 30px;
+            
+        } 
+        div{   
+            background-image: url("https://static.vecteezy.com/system/resources/previews/037/236/746/non_2x/ai-generated-beautuful-party-background-with-copy-space-free-photo.jpg ");
+            width:  100%;
+            height: 600px;
+            border-radius: 20px;
+         
+            
+           
+        }
+        
+
+    </style>
+</head>
+<body>
+    <div id="display"></div>
+</body>
+<script>
+  const display=document.getElementById('display');
+
+   let i=10;
+   function count(){
+    if(i==0){   
+        console.log("Happy Birthday"); 
+        display.innerHTML=`<img class="style" src= https://miro.medium.com/v2/resize:fit:1100/format:webp/1*AoaAYl3rB7JblXuybHpg9w.jpeg alt="image">`;
+    clearInterval(id);
+   }
+   else{
+   display.innerHTML=`<h1>${i--}</h1>`;
+    console.log(i);
+   }
+}
+ id=setInterval(count, 1000);
+
+</script>
+</html> 
